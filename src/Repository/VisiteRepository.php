@@ -31,6 +31,29 @@ class VisiteRepository extends ServiceEntityRepository
                     ->getResult(); 
         
     }
+    /**
+     * 
+     * @param type $champ
+     * @param type $valeur
+     * @return type Visite[]
+     */
+    public function findByEqualValue($champ, $valeur){
+        if($valeur==""){
+            return $this->createQueryBuilder('v')
+                        ->orderBy('v.'.$champ, ASC)
+                        ->getQuery()
+                        ->getResult();
+        }
+        else{
+            return $this->createQueryBuilder('v')
+                        ->where('v.'.$champ. '=:valeur')        
+                        ->setParameter('valeur', $valeur)
+                        ->orderBy('v.'.$champ , 'DESC')
+                        ->getQuery()
+                        ->getResult();
+        }
+        
+    }
     // /**
     //  * @return Visite[] Returns an array of Visite objects
     //  */
