@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\VisiteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=VisiteRepository::class)
@@ -80,7 +82,10 @@ class Visite
 
         return $this;
     }
-
+     public function getDatecreation(): ?DateTimeInterface
+    {
+        return $this->datecreation;
+    }
     public function getDatecreationString(): string
     {
         return $this->datecreation->format('d/m/Y');
