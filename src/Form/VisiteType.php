@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\Environnement;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType ;
 
 class VisiteType extends AbstractType
 {
@@ -20,6 +22,12 @@ class VisiteType extends AbstractType
             ->add('avis')
             ->add('tempmin', null, ['label'=>'t°min'])
             ->add('tempmax', null, ['label'=>'t°max'])
+            ->add('environnements', EntityType::class, [
+                'class' => Environnement::class,
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'required' => false
+            ])
             ->add('submit', SubmitType::class)
         ;
     }

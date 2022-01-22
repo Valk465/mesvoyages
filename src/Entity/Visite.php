@@ -3,11 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\VisiteRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
-use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=VisiteRepository::class)
