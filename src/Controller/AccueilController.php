@@ -9,11 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-/**
- * Description of AccueilController
- *
- * @author laure
- */
+
 class AccueilController extends AbstractController {
     
   

@@ -49,7 +49,7 @@ class AdminVoyagesController extends AbstractController{
     /**
      * @Route("admin/edit/{id}", name="admin.voyage.edit")
      * @param Visite $visite
-     * @param Request $ request 
+     * @param Request $request 
      * @return Response
      */
     public function edit(Visite $visite, Request $request): Response {
