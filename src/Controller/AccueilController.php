@@ -7,10 +7,25 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\VisiteRepository; 
+
 
 
 
 class AccueilController extends AbstractController {
+    /** 
+     * @var VisiteRepository
+     * 
+     */
+    private $repository;
+    /**
+     * 
+     * @param VisiteRepository $repository
+     * 
+     */
+    function __construct(VisiteRepository $repository) {
+        $this->repository =$repository;
+    }
     
   
 
@@ -19,7 +34,8 @@ class AccueilController extends AbstractController {
     * @return Response
     */
    public function index() : Response {
-       return new Response($this->render("pages/accueil.html.twig")); 
+       $visites = $this->repository->findAllLasted(2) ; 
+       return ($this->render("pages/accueil.html.twig", ['visites'=>$visites])); 
        
    }
 }
