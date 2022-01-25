@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 
 class VisiteType extends AbstractType
@@ -20,8 +21,10 @@ class VisiteType extends AbstractType
             ->add('ville')
             ->add('pays')
             ->add('datecreation', null, ['label'=>'date de création'])
-            ->add('note')
-            ->add('avis')
+            ->add('note',IntegerType::class, ['attr'=> ['min'=>0,
+                'max'=>20]])        
+            ->add('avis')                                
+               
             ->add('tempmin', null, ['label'=>'t°min'])
             ->add('tempmax', null, ['label'=>'t°max'])
             ->add('environnements', EntityType::class, [
